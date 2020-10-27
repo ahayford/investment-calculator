@@ -1,0 +1,209 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Lato;
+}
+
+body {
+    background-image: linear-gradient(#C3B299, #FFFFFF);
+    background-position: center;
+    position: relative;
+    height: 100vh;
+    color: #555;
+}
+
+.outer-wrapper {
+    display:grid;
+    grid-template-columns: repeat(12,1fr);
+    grid-gap: 1em;
+    text-align: center;
+}
+
+.input-textbox {
+    width: 100%;
+    background-color: #C3B299;
+    font-size: 1em;
+    border: 1px solid #523249;
+}
+
+input[type="radio"] {
+    display: none;
+}
+
+input[type="radio"] + *::before {
+    content: "";
+    display: inline-block;
+    width: 1vw;
+    height: 1vw;
+    margin-right: 0.3rem;
+    border-style: solid;
+    border-width: 0.1rem;
+    border-color: #523249;
+    background-color: #C3B299;
+}
+
+input[type="radio"]:checked + *::before {
+    background: radial-gradient(#523249 0%, #523249 50%, #C3B299 50%, #C3B299);
+    border-color: #523249;
+}
+
+input[type="radio"]:checked + * {
+    color: #523249;
+    font-weight: bold;
+}
+
+.title-outer-wrapper{
+    display:grid;
+    grid-column: 2/12;
+    background-color: #815355;
+    margin-top: 0.5em;
+    border-radius: 10px;
+    padding: 0.5em;
+    border: 2px solid #523249;
+}
+
+.title-inner-wrapper {
+    display:grid;
+    grid-row-start: 1;
+    background-color: #DBEBC0;
+    font-size:1.0em;
+    border-radius: 10px;
+    padding: 0.5em;
+    border: 3px solid #523249;
+}
+
+.author-wrapper {
+    display:grid;
+    grid-row-start: 2;
+    background-color: #DBEBC0;
+    font-size:0.75em;
+    margin-top: 1em;
+    border-radius: 10px;
+    padding: 0.5em;
+    border: 3px solid #523249;
+}
+
+.slider {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 20px;
+    background: #C3B299;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+    border: thin solid #523249;*/
+}
+
+.slider:hover {
+    opacity: 1;
+    border: thin solid #523249;
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    background: #3c042d;
+    cursor: pointer;
+}
+
+
+.slider-bar-outer-wrapper {
+    border-radius: 10px;
+    display:grid;
+    grid-row: 2/3;
+    grid-column: 2/6;
+    background-color: #815355;
+    font-size: 1em;
+    grid-gap: 10px;
+    padding: 0.5vw;
+    border: 3px solid #523249;
+}
+
+.starting-amount-wrapper,
+.year-wrapper,
+.return-rate-wrapper,
+.add-contribution-outer-wrapper {
+    display:grid;
+    grid-template-columns: 2fr 5fr;
+    border-radius: 10px;
+    background: #DBEBC0;
+    border: 2px solid #523249;
+}
+
+.starting-amount-title-wrapper,
+.return-rate-title-wrapper,
+.year-count-title-wrapper,
+.add-contribution-title-wrapper {
+    grid-column: 1/4;
+    font-size: 1.25em;
+}
+
+.add-contribution-freq-rate {
+    grid-column: 1/4;
+    font-size: 1.0em;
+}
+
+.starting-amount-textbox-wrapper,
+.year-count-textbox-wrapper,
+.return-rate-textbox-wrapper,
+.add-contribution-textbox-wrapper {
+    margin: 0.5em;
+}
+
+.starting-amount-slider-wrapper,
+.year-count-slider-wrapper,
+.return-rate-slider-wrapper,
+.add-contribution-slider-wrapper {
+    margin: 0.5em;
+}
+
+.table-wrapper {
+    border: 3px solid #523249;
+    border-radius: 10px;
+    display:grid;
+    grid-row-start: 3;
+    margin-bottom: 1em;
+    grid-column: 2/12;
+    background-color: #815355;
+    font-size:1em;
+    padding: 1vw
+}
+
+.graph-wrapper {
+    display:grid;
+    border-radius: 10px;
+    grid-template-columns: 1fr;
+    grid-template-rows: 5fr 1fr;
+    grid-row: 2/3;
+    grid-column: 6/12;
+    background-color: #815355;
+    border: 3px solid #523249;
+    font-size:1em;
+    grid-gap: 1em;
+    padding: 1vw;
+}
+
+.outer-chart-container {
+    display:grid;
+    border-radius: 10px;
+    grid-row: 1/5;
+    background-color: #DBEBC0;
+    border: 2px solid #523249;
+}
+
+.chart-radio-container {
+    display:grid;
+    width: 100%;
+    grid-column: 2/1;
+    grid-row: 5/5;
+    font-size: 1.0em;
+    border-radius: 10px;
+    border: 2px solid #523249;
+    background: #DBEBC0;
+}
+# investment-calculator
