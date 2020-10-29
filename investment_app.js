@@ -374,4 +374,3 @@ function getPieChartData(totalContributionsArray, cumulativeInterestArray) {
     }
 
 }
-# investment-calculator
