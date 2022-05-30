@@ -105,7 +105,6 @@ document.querySelectorAll('input[name="contribution-button"]')
 
 
 //---------------Check that all input values exist
-//debugger;
 if (typeof startingValue !== undefined && typeof yearsValue !== undefined
     && typeof returnValue !== undefined && typeof additionalValue !== undefined) {
     calculate();
@@ -117,42 +116,55 @@ function round(value) {
     return Number(Math.round(value + 'e' + 2) + 'e-' + 2).toFixed(2);
 }
 
-
-//---------------Set up table
-function calculate() {
+function renderTable() {
     let tableRef = document.getElementById('myTable');
     tableRef.innerHTML = "";
+
+    tableRef.createTBody()
+
+    let caption = tableRef.createCaption();
+    caption.textContent = 'Table with investment values';
 
     let header = tableRef.createTHead();
     let headerRow = header.insertRow(0);
 
-    let yearHeader = headerRow.insertCell(0);
-    let startPrincipalHeader = headerRow.insertCell(1);
-    let startBalanceHeader = headerRow.insertCell(2);
-    let totalContributionsHeader = headerRow.insertCell(3);
-    let interestHeader = headerRow.insertCell(4);
-    let cumulativeInterestHeader = headerRow.insertCell(5);
-    let endBalanceHeader = headerRow.insertCell(6);
-    let endPrincipalHeader = headerRow.insertCell(7);
+    headerRow.innerHTML = `
+        <th scope="col"><b>Year</b></th>
+        <th scope="col"><b>Start Principal</b></th>
+        <th scope="col"><b>Start Balance</b></th>
+        <th scope="col"><b>Total Contributions</b></th>
+        <th scope="col"><b>Interest</b></th>
+        <th scope="col"><b>Cumulative Interest</b></th>
+        <th scope="col"><b>End Balance</b></th>
+        <th scope="col"><b>End Principal</b></th>
+    `;
 
-    yearHeader.style.backgroundColor = "#DBEBC0";
-    startPrincipalHeader.style.backgroundColor = "#DBEBC0";
-    startBalanceHeader.style.backgroundColor = "#DBEBC0";
-    totalContributionsHeader.style.backgroundColor = "#DBEBC0";
-    interestHeader.style.backgroundColor = "#DBEBC0";
-    cumulativeInterestHeader.style.backgroundColor = "#DBEBC0";
-    endBalanceHeader.style.backgroundColor = "#DBEBC0";
-    endPrincipalHeader.style.backgroundColor = "#DBEBC0";
+}
 
-    yearHeader.innerHTML = "<b>Year</b>";
-    startPrincipalHeader.innerHTML = "<b>Start Principal</b>";
-    startBalanceHeader.innerHTML = "<b>Start Balance</b>";
-    totalContributionsHeader.innerHTML = "<b>Total Contributions</b>";
-    interestHeader.innerHTML = "<b>Interest</b>";
-    cumulativeInterestHeader.innerHTML = "<b>Cumulative Interest</b>";
-    endBalanceHeader.innerHTML = "<b>End Balance</b>";
-    endPrincipalHeader.innerHTML = "<b>End Principal</b>";
+function renderRow(year, startPrincipal, startBalance, totalContributions, interest, cumulativeInterest, endBalance, endPrincipal) {
+    //add new row to end of table
+    let tableRef = document.getElementById('myTable')
 
+    let tBodyRef = tableRef.getElementsByTagName('tbody')[0];
+    let tableRow = tBodyRef.insertRow(-1);
+
+    tableRow.innerHTML = `
+        <td>${year}</td>
+        <td>$${round(startPrincipal)}</td>
+        <td>$${round(startBalance)}</td>
+        <td>$${round(totalContributions)}</td>
+        <td>$${round(interest)}</td>
+        <td>$${round(cumulativeInterest)}</td>
+        <td>$${round(endBalance)}</td>
+        <td>$${round(endPrincipal)}</td>
+    `;
+}
+
+
+//---------------Set up table
+function calculate() {
+
+    renderTable();
     let yearArray = [];
     let cumulativeInterestArray = [];
     let totalContributionsArray = [];
@@ -163,27 +175,6 @@ function calculate() {
     let startPrincipal = startingValue;
 
     for (let i = 1; i <= yearsValue; i++) {
-
-        //add new row to end of table
-        let newRow = tableRef.insertRow(-1);
-
-        let yearCell = newRow.insertCell(0);
-        let startPrincipalCell = newRow.insertCell(1);
-        let startBalanceCell = newRow.insertCell(2);
-        let totalContributionsCell = newRow.insertCell(3);
-        let interestCell = newRow.insertCell(4);
-        let cumulativeInterestCell = newRow.insertCell(5);
-        let endBalanceCell = newRow.insertCell(6);
-        let endPrincipalCell = newRow.insertCell(7);
-
-        yearCell.style.backgroundColor = "#DBEBC0";
-        startPrincipalCell.style.backgroundColor = "#DBEBC0";
-        startBalanceCell.style.backgroundColor = "#DBEBC0";
-        totalContributionsCell.style.backgroundColor = "#DBEBC0";
-        interestCell.style.backgroundColor = "#DBEBC0";
-        cumulativeInterestCell.style.backgroundColor = "#DBEBC0";
-        endBalanceCell.style.backgroundColor = "#DBEBC0";
-        endPrincipalCell.style.backgroundColor = "#DBEBC0";
 
         let year = i;
 
@@ -222,34 +213,18 @@ function calculate() {
 
         let endPrincipal = (startPrincipal + additionalValue * frequency);
         cumulativeInterest += interest;
-
-        let yearText = document.createTextNode(year);
-        let startPrincipalText = document.createTextNode('$' + round(startPrincipal));
-        let startBalanceText = document.createTextNode('$' + round(startBalance));
-        let totalContributionsText = document.createTextNode('$' + round(totalContributions));
-        let interestText = document.createTextNode('$' + round(interest));
-        let cumulativeInterestText = document.createTextNode('$' + round(cumulativeInterest));
-        let endBalanceText = document.createTextNode('$' + round(endBalance));
-        let endPrincipalText = document.createTextNode('$' + round(endPrincipal));
-
-        yearCell.appendChild(yearText);
-        startPrincipalCell.appendChild(startPrincipalText);
-        startBalanceCell.appendChild(startBalanceText);
-        totalContributionsCell.appendChild(totalContributionsText);
-        interestCell.appendChild(interestText);
-        cumulativeInterestCell.appendChild(cumulativeInterestText);
-        endBalanceCell.appendChild(endBalanceText);
-        endPrincipalCell.appendChild(endPrincipalText);
-
         yearArray[i] = year;
         yearlyContributionsArray[i] = yearlyContributions;
         totalContributionsArray[i] = totalContributions;
         cumulativeInterestArray[i] = cumulativeInterest;
         startingAmountArray[i] = startingValue;
 
+        renderRow(year, startPrincipal, startBalance, totalContributions, interest, cumulativeInterest, endBalance, endPrincipal)
+
     }
 
     renderChart(startingAmountArray, yearlyContributionsArray, yearArray, totalContributionsArray, cumulativeInterestArray)
+
 }
 
 function renderChart(startingAmountArray, yearlyContributionsArray, yearArray, totalContributionsArray, cumulativeInterestArray) {

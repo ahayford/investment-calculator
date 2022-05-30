@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Investment Calculator</title>
+    <title><h1>Investment Calculator</h1></title>
     <meta charset="UTF-8">
-            <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700" rel="stylesheet" type="text/css">
-            <link href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,700" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,700" rel="stylesheet" type="text/css">
     <link type="text/css" rel="stylesheet" href="investment_style.css">
     <script src=https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js></script>
 </head>
@@ -14,115 +14,114 @@
 <div class="outer-wrapper">
 
     <div class="title-outer-wrapper">
-        <div class = "title-inner-wrapper">
+        <div class="title-inner-wrapper">
             Investment Calculator
-        </div>
-
-        <div class = "author-wrapper">
-            Written by Alexandra Hayford
         </div>
     </div>
 
-    <div class="slider-bar-outer-wrapper">
+    <section class="slider-bar-outer-wrapper" aria-label="Investment inputs">
 
+        <p class="screen-reader-only">This region of the page is used to adjust inputs on an investment plan.
+            Use the input text or slider bars within each article to adjust each amount.</p>
 
+        <article class="starting-amount-wrapper" aria-label="Starting Amount Input">
 
-        <div class="starting-amount-wrapper">
-
-            <div class = starting-amount-title-wrapper>
+            <div class=starting-amount-title-wrapper>
                 <label for="start-Amount-TextBox">Starting Amount:</label><br>
             </div>
 
-            <div class = "starting-amount-textbox-wrapper">
+            <div class="starting-amount-textbox-wrapper">
                 <form>
-                    <input type="number" min="0" id="start-Amount-TextBox" name="amount-text" class="input-textbox" value="10000"><br>
+                    <input type="number" min="0" id="start-Amount-TextBox" name="amount-text" class="input-textbox"
+                           value="10000"><br>
                 </form>
             </div>
 
-            <div class = "starting-amount-slider-wrapper">
+            <div class="starting-amount-slider-wrapper">
                 <input type="range" min="0" max="1E6" value="50" class="slider" id="starting-range" value="10000">
             </div>
 
-        </div>
+        </article>
 
 
+        <article class="year-wrapper" aria-label="Year Input">
 
-        <div class="year-wrapper">
-
-            <div class = "year-count-title-wrapper">
+            <div class="year-count-title-wrapper">
                 <label for="years-TextBox">Years to accumulate:</label><br>
             </div>
 
-            <div class = "year-count-textbox-wrapper">
+            <div class="year-count-textbox-wrapper">
                 <form>
-                    <input type="number" min="0" id="years-TextBox" name="years-text" class="input-textbox" value="10"><br>
+                    <input type="number" min="0" id="years-TextBox" name="years-text" class="input-textbox"
+                           value="10"><br>
                 </form>
             </div>
 
-            <div class = "year-count-slider-wrapper">
+            <div class="year-count-slider-wrapper">
                 <input type="range" min="0" max="100" value="10" class="slider" id="year-range" value="10">
 
             </div>
 
-        </div>
+        </article>
 
 
+        <article class="return-rate-wrapper" aria-label="Return Rate Input">
 
-
-        <div class="return-rate-wrapper">
-
-            <div class = "return-rate-title-wrapper">
+            <div class="return-rate-title-wrapper">
                 <label for="return-TextBox">Return rate:</label><br>
             </div>
 
-            <div class = "return-rate-textbox-wrapper">
+            <div class="return-rate-textbox-wrapper">
                 <form>
-                    <input type="number" min="1" id="return-TextBox" name="rate-text" class="input-textbox" value="7"><br>
+                    <input type="number" min="1" id="return-TextBox" name="rate-text" class="input-textbox"
+                           value="7"><br>
                 </form>
             </div>
 
-            <div class = "return-rate-slider-wrapper">
+            <div class="return-rate-slider-wrapper">
                 <input type="range" min="1" max="25" value="7" class="slider" id="return-rate-range" value="7">
             </div>
 
-        </div>
+        </article>
 
 
+        <article class="add-contribution-outer-wrapper" aria-label="Additional Contributions Input">
 
-        <div class="add-contribution-outer-wrapper">
-
-            <div class = "add-contribution-title-wrapper">
+            <div class="add-contribution-title-wrapper">
                 <label for="additional-TextBox">Additional contributions:</label>
             </div>
 
-            <div class = "add-contribution-textbox-wrapper">
+            <div class="add-contribution-textbox-wrapper">
                 <form>
-                    <input type="number" min="0" id="additional-TextBox" name="additional-text" class="input-textbox" value="1000"><br>
+                    <input type="number" min="0" id="additional-TextBox" name="additional-text" class="input-textbox"
+                           value="1000"><br>
                 </form>
             </div>
 
-            <div class = "add-contribution-slider-wrapper">
+            <div class="add-contribution-slider-wrapper">
                 <input type="range" min="0" max="1E6" value="0" class="slider" id="contribution-range" value="1000">
             </div>
 
-            <div class = "add-contribution-freq-rate">
+            <div class="add-contribution-freq-rate">
                 <form>
                     <label for="return-TextBox">Contribute at the end of each:</label><br>
-                    <input type="radio" id="month-radio" class="radio-button" name="contribution-button" value="monthly">
+                    <input type="radio" id="month-radio" class="radio-button" name="contribution-button"
+                           value="monthly">
                     <label for="month-radio">Month</label>
-                    <input type="radio" id="year-radio" class="radio-button" name="contribution-button" value="yearly" checked>
+                    <input type="radio" id="year-radio" class="radio-button" name="contribution-button" value="yearly"
+                           checked>
                     <label for="year-radio">Year</label>
                 </form>
             </div>
-        </div>
+        </article>
 
 
+    </section>
 
-    </div>
+    <section class="graph-wrapper" aria-label="Graphical Output">
 
-    <div class="graph-wrapper">
-
-        <div class = "outer-chart-container">
+        <div class="outer-chart-container">
+            <p class="screen-reader-only">You are currently in a chart container, that have options to toggle between pie and bar charts.</p>
             <div id="chart-container">
                 <canvas id="myChart"></canvas>
             </div>
@@ -130,7 +129,7 @@
 
         <div class="chart-radio-container">
             <form id="chart-selection">
-                <label for="chart-selection">Graph Selection:</label><br>
+                <label for="chart-selection">Graph Type Selection:</label><br>
                 <input type="radio" id="bar" name="graph-selection" class="radio-button" value="bar" checked>
                 <label for="bar">Bar</label>
                 <input type="radio" id="pie" name="graph-selection" class="radio-button" value="pie">
@@ -138,14 +137,17 @@
             </form>
         </div>
 
-    </div>
+    </section>
 
 
-    <div class="table-wrapper">
-            <table id="myTable">
-            </table>
+    <section class="table-wrapper" aria-label="Tabular Output">
+        <table id="myTable">
+        </table>
 
-    </div>
+        <div class="author-wrapper">
+            © Alexandra Hayford
+        </div>
+    </section>
 
 </div>
 
