@@ -122,9 +122,6 @@ function renderTable() {
 
     tableRef.createTBody()
 
-    let caption = tableRef.createCaption();
-    caption.textContent = 'Table with investment values';
-
     let header = tableRef.createTHead();
     let headerRow = header.insertRow(0);
 
@@ -142,7 +139,6 @@ function renderTable() {
 }
 
 function renderRow(year, startPrincipal, startBalance, totalContributions, interest, cumulativeInterest, endBalance, endPrincipal) {
-    //add new row to end of table
     let tableRef = document.getElementById('myTable')
 
     let tBodyRef = tableRef.getElementsByTagName('tbody')[0];
